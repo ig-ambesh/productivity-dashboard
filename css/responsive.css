@@ -20,56 +20,29 @@
   /* Header */
   #app-header {
     padding: 0 var(--space-md);
-    height: 56px;
+    height: 52px;
   }
 
   .header-logo h1 {
-    font-size: var(--fs-base);
+    font-size: var(--fs-sm);
   }
 
   #header-datetime {
-    display: none; /* compact header on smaller screens */
+    display: none;
   }
 
-  /* Show mobile sidebar toggle */
-  .sidebar-toggle {
-    display: flex;
-  }
-
-  /* Sidebar: off-canvas on tablet & mobile */
+  /* Sidebar: narrower but still visible */
   #app-sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 240px;
-    height: 100vh;
-    z-index: var(--z-modal);
-    transform: translateX(-100%);
-    transition: transform var(--transition-slow);
-    padding-top: var(--space-xl);
-    border-right: 1px solid var(--color-border);
-    background: var(--color-surface);
+    width: 60px;
   }
 
-  /* Show sidebar when open class is added via JS */
-  #app-sidebar.sidebar-open {
-    transform: translateX(0);
+  .sidebar-label {
+    font-size: 0.5625rem;
   }
 
-  /* Show labels when sidebar is open on mobile */
-  #app-sidebar.sidebar-open .sidebar-label {
-    display: block;
-  }
-
-  #app-sidebar.sidebar-open .sidebar-link {
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: var(--space-sm) var(--space-md);
-    gap: var(--space-sm);
-  }
-
-  #app-sidebar.sidebar-open .sidebar-label {
-    font-size: var(--fs-sm);
+  .sidebar-link {
+    padding: var(--space-xs) var(--space-2xs);
+    font-size: var(--fs-base);
   }
 
   /* Main Content */
@@ -85,6 +58,7 @@
   /* Dashboard widget grid → single column */
   #dashboard-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
   }
 
   /* Reset all widget grid placements to flow naturally */
@@ -99,6 +73,39 @@
   /* Section Headers */
   .section-header h2 {
     font-size: var(--fs-xl);
+  }
+
+  /* Cards: reduced padding */
+  .card {
+    padding: var(--space-lg);
+  }
+
+  /* Widget header: tighter */
+  .widget-header {
+    margin-bottom: var(--space-sm);
+  }
+
+  .widget-title {
+    font-size: var(--fs-sm);
+  }
+
+  /* Datetime widget */
+  .datetime-time {
+    font-size: var(--fs-2xl);
+  }
+
+  .widget-datetime-body {
+    padding: var(--space-xs) 0;
+  }
+
+  /* Stats */
+  .stat-value {
+    font-size: var(--fs-xl);
+  }
+
+  /* Quote */
+  #widget-quote-text {
+    font-size: var(--fs-base);
   }
 
   /* Planner */
@@ -119,65 +126,135 @@
   #pomodoro-timer {
     font-size: 3.5rem;
   }
-
-  /* Cards */
-  .card {
-    padding: var(--space-lg);
-  }
 }
 
 /* ── Mobile (≤ 576px) ────────────────────── */
 @media (max-width: 576px) {
 
-  /* Header */
+  /* Header: one-line, compact */
   #app-header {
     padding: 0 var(--space-sm);
+    height: 48px;
   }
 
   .header-logo h1 {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-xs);
   }
 
   .header-logo i {
-    font-size: var(--fs-lg);
+    font-size: var(--fs-base);
+  }
+
+  .header-right {
+    gap: var(--space-xs);
   }
 
   .theme-toggle-wrapper i {
     display: none; /* Hide sun/moon labels, keep toggle */
   }
 
-  /* Main Content */
+  /* Sidebar: icon-only, narrow */
+  #app-sidebar {
+    width: 48px;
+  }
+
+  .sidebar-label {
+    display: none;
+  }
+
+  .sidebar-link {
+    padding: var(--space-xs) 0;
+    font-size: var(--fs-sm);
+  }
+
+  .sidebar-item.active .sidebar-link::before {
+    left: -4px;
+    height: 18px;
+    width: 2px;
+  }
+
+  /* Main Content: full width, minimal padding */
   #main-content {
     padding: var(--space-sm);
   }
 
-  /* Dashboard */
+  /* Dashboard greeting */
+  .dashboard-greeting {
+    margin-bottom: var(--space-sm);
+  }
+
   .dashboard-greeting h2 {
     font-size: var(--fs-xl);
   }
 
   .dashboard-greeting p {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-xs);
   }
 
-  /* Datetime widget */
+  /* Dashboard grid: stack, reduced gap */
+  #dashboard-grid {
+    gap: var(--space-sm);
+  }
+
+  /* Widget order: Todo, DateTime, Quote, Stats */
+  .widget-todo     { order: 1; }
+  .widget-datetime { order: 2; }
+  .widget-quote    { order: 3; }
+  .widget-stats    { order: 4; }
+
+  /* Cards: compact */
+  .card {
+    padding: var(--space-sm) var(--space-md);
+    width: 100%;
+  }
+
+  /* Widget header */
+  .widget-header {
+    margin-bottom: var(--space-xs);
+  }
+
+  .widget-icon {
+    width: 30px;
+    height: 30px;
+    font-size: var(--fs-xs);
+  }
+
+  /* Datetime widget: compact */
+  .datetime-day {
+    font-size: var(--fs-xs);
+    margin-bottom: 2px;
+  }
+
+  .datetime-date {
+    font-size: var(--fs-xs);
+    margin-bottom: var(--space-xs);
+  }
+
   .datetime-time {
-    font-size: var(--fs-2xl);
+    font-size: var(--fs-xl);
   }
 
   /* Stats grid */
   .stats-grid {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
+  }
+
+  .stat-item {
+    padding: var(--space-xs);
   }
 
   .stat-value {
-    font-size: var(--fs-xl);
+    font-size: var(--fs-lg);
   }
 
-  /* Quote widget */
+  .stat-label {
+    font-size: 0.625rem;
+  }
+
+  /* Quote */
   #widget-quote-text {
-    font-size: var(--fs-base);
+    font-size: var(--fs-sm);
   }
 
   /* Section Headers */
@@ -185,6 +262,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-xs);
+    margin-bottom: var(--space-md);
   }
 
   .section-header h2 {
@@ -254,6 +332,7 @@
   /* Footer */
   #app-footer {
     padding: var(--space-md);
+    font-size: 0.625rem;
   }
 }
 
