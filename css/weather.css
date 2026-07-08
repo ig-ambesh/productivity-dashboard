@@ -1,0 +1,111 @@
+/* ============================================
+   WEATHER.CSS
+   Weather Widget Styles
+   Productivity Dashboard — 2026
+   ============================================ */
+
+/* ── Weather Container ───────────────────── */
+#section-weather {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Weather Card ────────────────────────── */
+.weather-card {
+  text-align: center;
+  padding: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient overlay */
+.weather-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--color-info-light) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ── Weather Icon ────────────────────────── */
+.weather-icon-display {
+  font-size: 4rem;
+  color: var(--color-weather);
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+
+/* ── City Name ───────────────────────────── */
+#weather-city {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+/* ── Temperature ─────────────────────────── */
+#weather-temp {
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+/* ── Condition ───────────────────────────── */
+#weather-condition {
+  font-size: var(--fs-base);
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+  margin-bottom: var(--space-xl);
+}
+
+/* ── Weather Details Grid ────────────────── */
+.weather-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-divider);
+}
+
+.weather-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.weather-detail-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.weather-detail-value {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+.weather-detail i {
+  font-size: var(--fs-md);
+  color: var(--color-weather);
+  margin-bottom: var(--space-2xs);
+}
+
+/* ── Weather Loading ─────────────────────── */
+#weather-loading {
+  padding: var(--space-3xl);
+}
+
+#weather-loading .spinner {
+  border-top-color: var(--color-weather);
+}

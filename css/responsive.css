@@ -1,0 +1,333 @@
+/* ============================================
+   RESPONSIVE.CSS
+   Responsive Breakpoints & Media Queries
+   Productivity Dashboard — 2026
+   ============================================ */
+
+/*
+   Breakpoints:
+   ──────────────────────────
+   Mobile:       < 576px
+   Tablet:       576px – 768px
+   Laptop:       769px – 1024px
+   Desktop:      > 1024px
+   ──────────────────────────
+*/
+
+/* ── Tablet & Below (≤ 768px) ────────────── */
+@media (max-width: 768px) {
+
+  /* Header */
+  #app-header {
+    padding: 0 var(--space-md);
+    height: 56px;
+  }
+
+  .header-logo h1 {
+    font-size: var(--fs-base);
+  }
+
+  #header-datetime {
+    display: none; /* compact header on smaller screens */
+  }
+
+  /* Show mobile sidebar toggle */
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  /* Sidebar: off-canvas on tablet & mobile */
+  #app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    z-index: var(--z-modal);
+    transform: translateX(-100%);
+    transition: transform var(--transition-slow);
+    padding-top: var(--space-xl);
+    border-right: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  /* Show sidebar when open class is added via JS */
+  #app-sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  /* Show labels when sidebar is open on mobile */
+  #app-sidebar.sidebar-open .sidebar-label {
+    display: block;
+  }
+
+  #app-sidebar.sidebar-open .sidebar-link {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  #app-sidebar.sidebar-open .sidebar-label {
+    font-size: var(--fs-sm);
+  }
+
+  /* Main Content */
+  #main-content {
+    padding: var(--space-md);
+  }
+
+  /* Dashboard */
+  .dashboard-greeting h2 {
+    font-size: var(--fs-2xl);
+  }
+
+  /* Dashboard widget grid → single column */
+  #dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reset all widget grid placements to flow naturally */
+  .widget-todo,
+  .widget-datetime,
+  .widget-stats,
+  .widget-quote {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  /* Section Headers */
+  .section-header h2 {
+    font-size: var(--fs-xl);
+  }
+
+  /* Planner */
+  .planner-row {
+    grid-template-columns: 72px 1fr;
+  }
+
+  .planner-time {
+    font-size: var(--fs-xs);
+  }
+
+  /* Pomodoro */
+  .pomodoro-ring {
+    width: 200px;
+    height: 200px;
+  }
+
+  #pomodoro-timer {
+    font-size: 3.5rem;
+  }
+
+  /* Cards */
+  .card {
+    padding: var(--space-lg);
+  }
+}
+
+/* ── Mobile (≤ 576px) ────────────────────── */
+@media (max-width: 576px) {
+
+  /* Header */
+  #app-header {
+    padding: 0 var(--space-sm);
+  }
+
+  .header-logo h1 {
+    font-size: var(--fs-sm);
+  }
+
+  .header-logo i {
+    font-size: var(--fs-lg);
+  }
+
+  .theme-toggle-wrapper i {
+    display: none; /* Hide sun/moon labels, keep toggle */
+  }
+
+  /* Main Content */
+  #main-content {
+    padding: var(--space-sm);
+  }
+
+  /* Dashboard */
+  .dashboard-greeting h2 {
+    font-size: var(--fs-xl);
+  }
+
+  .dashboard-greeting p {
+    font-size: var(--fs-sm);
+  }
+
+  /* Datetime widget */
+  .datetime-time {
+    font-size: var(--fs-2xl);
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+
+  .stat-value {
+    font-size: var(--fs-xl);
+  }
+
+  /* Quote widget */
+  #widget-quote-text {
+    font-size: var(--fs-base);
+  }
+
+  /* Section Headers */
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .section-header h2 {
+    font-size: var(--fs-lg);
+  }
+
+  /* Todo & Goals Input */
+  .todo-input-wrapper,
+  .goals-input-wrapper {
+    flex-direction: column;
+  }
+
+  .todo-input-wrapper .btn-primary,
+  .goals-input-wrapper .btn-primary {
+    width: 100%;
+  }
+
+  /* Todo Actions always visible on mobile */
+  .todo-actions {
+    opacity: 1;
+  }
+
+  /* Planner */
+  .planner-row {
+    grid-template-columns: 60px 1fr;
+    min-height: 44px;
+  }
+
+  .planner-time {
+    font-size: 0.6875rem;
+    padding: var(--space-xs);
+  }
+
+  .planner-note {
+    min-height: 44px;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--fs-sm);
+  }
+
+  /* Pomodoro */
+  .pomodoro-ring {
+    width: 180px;
+    height: 180px;
+  }
+
+  #pomodoro-timer {
+    font-size: 3rem;
+  }
+
+  .pomodoro-controls {
+    flex-wrap: wrap;
+  }
+
+  /* Weather */
+  .weather-icon-display {
+    font-size: 3rem;
+  }
+
+  #weather-temp {
+    font-size: var(--fs-3xl);
+  }
+
+  .weather-details {
+    gap: var(--space-sm);
+  }
+
+  /* Footer */
+  #app-footer {
+    padding: var(--space-md);
+  }
+}
+
+/* ── Laptop & Above (≥ 769px) ────────────── */
+@media (min-width: 769px) {
+  /* Sidebar is visible on desktop */
+  #app-sidebar {
+    display: flex;
+  }
+
+  /* Hide mobile toggle */
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+/* ── Large Desktop (≥ 1200px) ────────────── */
+@media (min-width: 1200px) {
+  #dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Hover Capability Detection ──────────── */
+@media (hover: none) {
+  /* Always show todo actions on touch devices */
+  .todo-actions {
+    opacity: 1;
+  }
+}
+
+/* ── Prefers Reduced Motion ──────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Prefers Color Scheme (auto dark) ────── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* If no explicit theme is set, respect system preference */
+    --color-accent: #818cf8;
+    --color-accent-hover: #a5b4fc;
+    --color-accent-light: rgba(129, 140, 248, 0.15);
+    --color-accent-glow: rgba(129, 140, 248, 0.30);
+
+    --color-bg: #0f0f17;
+    --color-bg-alt: #161622;
+    --color-surface: #1c1c2e;
+    --color-surface-hover: #24243a;
+    --color-surface-raised: #222238;
+    --color-surface-overlay: rgba(28, 28, 46, 0.90);
+
+    --color-text-primary: #f1f1f4;
+    --color-text-secondary: #9ca3b4;
+    --color-text-tertiary: #6b7280;
+    --color-text-inverse: #0f0f17;
+
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-strong: rgba(255, 255, 255, 0.15);
+    --color-divider: rgba(255, 255, 255, 0.06);
+
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.25);
+    --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.40);
+
+    --glass-bg: rgba(28, 28, 46, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --scrollbar-thumb: rgba(255, 255, 255, 0.12);
+    --scrollbar-thumb-hover: rgba(255, 255, 255, 0.22);
+  }
+}

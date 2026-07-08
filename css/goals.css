@@ -1,0 +1,159 @@
+/* ============================================
+   GOALS.CSS
+   Daily Goals Feature Styles
+   Productivity Dashboard — 2026
+   ============================================ */
+
+/* ── Goals Container ─────────────────────── */
+#section-goals {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Goals Input Area ────────────────────── */
+.goals-input-wrapper {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+#goal-input {
+  flex: 1;
+}
+
+/* ── Goals Progress Bar ──────────────────── */
+.goals-progress {
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.goals-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+#goals-progress-text {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+}
+
+.goals-progress-percent {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-goals);
+}
+
+.goals-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+#goals-progress-fill {
+  width: 43%; /* Example: 3/7 ≈ 43% */
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-goals), #34d399);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+/* ── Goals List ──────────────────────────── */
+#goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* ── Goal Item ───────────────────────────── */
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.goal-item:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ── Goal Checkbox ───────────────────────── */
+.goal-checkbox {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.goal-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.goal-checkbox .checkmark {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 6px;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goal-checkbox .checkmark i {
+  font-size: var(--fs-xs);
+  color: white;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all var(--transition-spring);
+}
+
+.goal-checkbox input:checked + .checkmark {
+  background: var(--color-goals);
+  border-color: var(--color-goals);
+}
+
+.goal-checkbox input:checked + .checkmark i {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Goal Text ───────────────────────────── */
+.goal-text {
+  flex: 1;
+  font-size: var(--fs-base);
+  color: var(--color-text-primary);
+  transition: all var(--transition-base);
+}
+
+.goal-item.completed .goal-text {
+  text-decoration: line-through;
+  color: var(--color-text-tertiary);
+}
+
+/* ── Goals Empty State ───────────────────── */
+#goals-empty {
+  padding: var(--space-3xl);
+}
+
+#goals-empty i {
+  color: var(--color-goals);
+}

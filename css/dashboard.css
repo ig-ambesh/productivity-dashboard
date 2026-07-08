@@ -1,0 +1,338 @@
+/* ============================================
+   DASHBOARD.CSS
+   Home Dashboard — Widget Grid Layout
+   Productivity Dashboard — 2026
+   ============================================ */
+
+/* ── Dashboard Section ───────────────────── */
+#section-dashboard {
+  display: block; /* visible by default */
+}
+
+/* ── Dashboard Greeting ──────────────────── */
+.dashboard-greeting {
+  margin-bottom: var(--space-xl);
+}
+
+.dashboard-greeting h2 {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2xs);
+}
+
+.dashboard-greeting p {
+  font-size: var(--fs-base);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   DASHBOARD WIDGET GRID
+   2-column grid on desktop, stacks on mobile
+   ============================================ */
+#dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--space-lg);
+}
+
+/* Todo widget spans full width on left column, both rows */
+.widget-todo {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+/* Datetime widget — top right */
+.widget-datetime {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+/* Stats widget — bottom right */
+.widget-stats {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+/* Quote widget — full width bottom */
+.widget-quote {
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+}
+
+/* ============================================
+   WIDGET BASE
+   ============================================ */
+.widget {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Widget Header ───────────────────────── */
+.widget-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.widget-title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* ── Widget Icon ─────────────────────────── */
+.widget-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-base);
+  flex-shrink: 0;
+}
+
+.widget-icon-datetime {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--color-datetime);
+}
+
+.widget-icon-stats {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+.widget-icon-todo {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--color-todo);
+}
+
+.widget-icon-quote {
+  background: rgba(236, 72, 153, 0.12);
+  color: var(--color-quote);
+}
+
+/* ── Widget Action Link ──────────────────── */
+.widget-action-link {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-accent);
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.widget-action-link:hover {
+  gap: var(--space-xs);
+  color: var(--color-accent-hover);
+}
+
+/* ── Widget Body ─────────────────────────── */
+.widget-body {
+  flex: 1;
+}
+
+/* ============================================
+   WIDGET: DATE & TIME
+   ============================================ */
+.widget-datetime-body {
+  text-align: center;
+  padding: var(--space-md) 0 var(--space-xs);
+}
+
+.datetime-day {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-2xs);
+}
+
+.datetime-date {
+  font-size: var(--fs-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.datetime-time {
+  font-family: var(--font-mono);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-accent);
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+/* ============================================
+   WIDGET: QUICK STATS
+   ============================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-md);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-base);
+}
+
+.stat-item:hover {
+  background: var(--color-surface-hover);
+}
+
+.stat-value {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Goals progress row — spans both columns */
+.stat-item-wide {
+  grid-column: 1 / -1;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-xs);
+}
+
+.stat-item-wide .stat-label {
+  text-align: left;
+}
+
+.stat-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.stat-progress-fill {
+  width: 43%; /* 3/7 ≈ 43% placeholder */
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-goals), #34d399);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+.stat-progress-text {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-goals);
+  text-align: right;
+}
+
+/* ============================================
+   WIDGET: TODO PREVIEW
+   ============================================ */
+.widget-todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.widget-todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.widget-todo-item:hover {
+  background: var(--color-surface-hover);
+}
+
+/* ── Status Dot ──────────────────────────── */
+.widget-todo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-pending {
+  background: var(--color-accent);
+}
+
+.dot-important {
+  background: var(--color-warning);
+}
+
+.dot-completed {
+  background: var(--color-success);
+}
+
+/* ── Todo Text ───────────────────────────── */
+.widget-todo-text {
+  flex: 1;
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+}
+
+.widget-todo-item.completed .widget-todo-text {
+  text-decoration: line-through;
+  color: var(--color-text-tertiary);
+}
+
+/* ── Star Badge ──────────────────────────── */
+.widget-todo-badge {
+  font-size: var(--fs-xs);
+  color: var(--color-warning);
+}
+
+/* ============================================
+   WIDGET: MOTIVATION QUOTE
+   ============================================ */
+.widget-quote-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+#widget-quote-text {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-primary);
+  font-style: italic;
+  border-left: 3px solid var(--color-quote);
+  padding-left: var(--space-md);
+  margin: 0; /* reset blockquote default */
+}
+
+#widget-quote-author {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--fw-medium);
+  font-style: normal;
+  padding-left: var(--space-md);
+}
