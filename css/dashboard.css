@@ -5,9 +5,9 @@
    ============================================ */
 
 /* ── Dashboard Section ───────────────────── */
-#section-dashboard {
-  display: block; /* visible by default */
-}
+/* #section-dashboard {
+  display: block;
+} */
 
 /* ── Dashboard Greeting ──────────────────── */
 .dashboard-greeting {
