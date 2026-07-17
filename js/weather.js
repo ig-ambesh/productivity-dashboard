@@ -1,6 +1,7 @@
 const cityElement = document.getElementById("weather-city");
 const tempElement = document.getElementById("weather-temp");
 const conditionElement = document.getElementById("weather-condition");
+const weatherIcon = document.getElementById("weather-icon");
 
 const humidityElement = document.querySelector(
   "#weather-humidity .weather-detail-value",
@@ -100,6 +101,8 @@ async function fetchWeather(latitude, longitude) {
       data.current.weather_code,
     );
 
+    updateWeatherIcon(data.current.weather_code);
+
     const address = locationData.address;
 
     cityElement.textContent =
@@ -121,4 +124,32 @@ async function fetchWeather(latitude, longitude) {
   } finally {
     showLoading(false);
   }
+}
+
+function updateWeatherIcon(code) {
+
+    weatherIcon.className = "fa-solid";
+
+    if (code === 0) {
+        weatherIcon.classList.add("fa-sun");
+    }
+    else if (code >= 1 && code <= 3) {
+        weatherIcon.classList.add("fa-cloud-sun");
+    }
+    else if (code === 45 || code === 48) {
+        weatherIcon.classList.add("fa-smog");
+    }
+    else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
+        weatherIcon.classList.add("fa-cloud-rain");
+    }
+    else if (code >= 71 && code <= 77) {
+        weatherIcon.classList.add("fa-snowflake");
+    }
+    else if (code >= 95) {
+        weatherIcon.classList.add("fa-bolt");
+    }
+    else {
+        weatherIcon.classList.add("fa-cloud");
+    }
+
 }
