@@ -17,52 +17,60 @@ addTodoBtn.addEventListener("click", addTask);
 
 // Press Enter
 todoInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-        addTask();
-    }
+  if (e.key === "Enter") {
+    addTask();
+  }
 });
 
 // Add Task
 function addTask() {
+  const text = todoInput.value.trim();
 
-    const text = todoInput.value.trim();
+  if (text === "") return;
 
-    if (text === "") return;
+  const task = {
+    id: Date.now(),
+    text: text,
+    completed: false,
+  };
 
-    const task = {
-        id: Date.now(),
-        text: text
-    };
+  tasks.push(task);
 
-    tasks.push(task);
+  renderTasks();
 
-    renderTasks();
+  todoInput.value = "";
 
-    todoInput.value = "";
-
-    todoInput.focus();
+  todoInput.focus();
 }
 
 // Render Tasks
 function renderTasks() {
+  todoList.innerHTML = "";
 
-    todoList.innerHTML = "";
+  if (tasks.length === 0) {
+    emptyState.style.display = "block";
+    return;
+  }
 
-    if (tasks.length === 0) {
-        emptyState.style.display = "block";
-        return;
-    }
+  emptyState.style.display = "none";
 
-    emptyState.style.display = "none";
+  tasks.forEach((task) => {
+    const item = document.createElement("div");
 
-    tasks.forEach(task => {
+    item.className = "todo-item";
 
-        const item = document.createElement("div");
-
-        item.className = "todo-item";
-
-        item.innerHTML = `
-            <span class="todo-text">${task.text}</span>
+    item.innerHTML = `
+        <label class="todo-checkbox">
+            <input
+               type="checkbox"
+               class="task-checkbox"
+               data-id="${task.id}"
+               ${task.completed ? "checked" : ""}
+            >
+            <span class="todo-text ${task.completed ? "completed" : ""}">
+               ${task.text}
+            </span>
+        </label>
 
             <div class="todo-actions">
                 <button class="btn-icon btn-delete" data-id="${task.id}">
@@ -71,24 +79,42 @@ function renderTasks() {
             </div>
         `;
 
-        todoList.appendChild(item);
+    todoList.appendChild(item);
+  });
 
-    });
-
-    attachDeleteEvents();
+  attachDeleteEvents();
+  attachCompleteEvents();
 }
 
 function attachDeleteEvents() {
+  const deleteButtons = document.querySelectorAll(".btn-delete");
 
-    const deleteButtons = document.querySelectorAll(".btn-delete");
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = Number(button.dataset.id);
 
-    deleteButtons.forEach(button => {
+      tasks = tasks.filter((task) => task.id !== id);
 
-        button.addEventListener("click", () => {
+      renderTasks();
+    });
+  });
+}
 
-            const id = Number(button.dataset.id);
+function attachCompleteEvents() {
 
-            tasks = tasks.filter(task => task.id !== id);
+    const checkboxes = document.querySelectorAll(".task-checkbox");
+
+    checkboxes.forEach((checkbox) => {
+
+        checkbox.addEventListener("change", () => {
+
+            const id = Number(checkbox.dataset.id);
+
+            const task = tasks.find(task => task.id === id);
+
+            if(task){
+                task.completed = checkbox.checked;
+            }
 
             renderTasks();
 

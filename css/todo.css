@@ -94,3 +94,19 @@
 #todo-empty i {
   color: var(--color-todo);
 }
+
+.todo-text.completed{
+    text-decoration: line-through;
+    opacity: .6;
+}
+
+.todo-checkbox{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex:1;
+}
+
+.task-checkbox{
+    cursor:pointer;
+}
