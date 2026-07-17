@@ -157,3 +157,18 @@
 #goals-empty i {
   color: var(--color-goals);
 }
+
+.goal-delete-btn {
+    border: none;
+    background: transparent;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 6px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.goal-delete-btn:hover {
+    background: rgba(239, 68, 68, 0.12);
+}
