@@ -110,3 +110,15 @@
 .task-checkbox{
     cursor:pointer;
 }
+
+.todo-item.important {
+    border-left: 4px solid #f59e0b;
+}
+
+.todo-item.important .todo-text {
+    font-weight: 600;
+}
+
+.btn-important {
+    color: #f59e0b;
+}
